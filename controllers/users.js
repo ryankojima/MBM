@@ -13,7 +13,7 @@ function postUser(req,res){
 		
 		if(err){
 			console.log(err);
-
+			res.status(400);
 			message=err.errmsg;
 			
 		}else{
@@ -33,6 +33,7 @@ function getUser(req,res){
 		if(err){
 			console.log(err);
 
+			res.status(400);
 			message=err.errmsg;
 			
 			//res.send(err);
@@ -44,6 +45,7 @@ function getUser(req,res){
 	});
 }
 function getUsers(req,res){
+	res.status(501);
 	res.json({ message : "List query is not supported." });
 }
 
@@ -55,6 +57,7 @@ function deleteUser(req,res){
 		if(err){
 			console.log(err);
 
+			res.status(400);
 			message = err.errmsg;
 			
 			//res.send(err);
@@ -71,6 +74,7 @@ function updateUser(req,res){
 
 		console.log(typeof(req.body));
 		if(Object.keys(req.body).length == 0){			
+			res.status(400);
 			res.json({ message : "No values passed." });
 			return;
 		}
@@ -81,6 +85,7 @@ function updateUser(req,res){
 		if(err){
 			console.log(err);
 
+			res.status(400);
 			message = err.errmsg;
 			
 			//res.send(err);
@@ -103,6 +108,7 @@ function updateUser(req,res){
 
 function IdMustBeAuthenticated(req,res,next){
 	if(req.authInfo._id != req.params.id){
+		res.status(401);
 		res.json({ message : "Invalid ID request." });
 		return;
 	}

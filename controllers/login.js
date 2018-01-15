@@ -25,6 +25,7 @@ function authenticate(req,res){
 
 			if(user.length == 0){
 				message = "Login Failed.";
+				res.status(401);
 			}else{
 			
 				const payload = {
@@ -50,6 +51,7 @@ function tokenRequired(req,res,next){
 	njwt.verify(token,config.JWT.SECRET, (err,vJwt) => {
 		if(err){
 			message = "Invalid Token.";
+			res.status(401);
 			res.json({ message : message });
 		}else{
 			req.authInfo=vJwt.body.sub;
