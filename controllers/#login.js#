@@ -1,2 +1,0 @@
-var Users=require('../models/user');
-var Sessions=require('../models/session');
