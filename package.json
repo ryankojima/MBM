@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Micro baby monitor",
   "main": "bmapp.js",
+  "repository": {
+	"type": "git",
+	"url": "https://github.com/ryankojima/MBM.git"
+	},
   "dependencies": {
     "body-parser": "^1.18.2",
     "config": "^1.29.2",
